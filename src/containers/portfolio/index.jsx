@@ -2,26 +2,38 @@ import React from "react";
 import PageHeaderContent from "../../components/pageHeaderContent";
 import { BsInfoCircleFill } from "react-icons/bs";
 import ImageOne from "../../images/image1.jpg";
-import ImageTwo from "../../images/image2.jpg";
-import ImageThree from "../../images/image3.jpg";
-import ImageFour from "../../images/image4.jpg";
-import ImageFive from "../../images/image5.jpg";
+import BandUp from "../../images/bandup-logo.svg"
+import Oxford from "../../images/image.png"
+import BirJoy from "../../images/logo.png"
 import "./styles.scss";
 import { useState } from "react";
 
 const portfolioData = [
   {
-    id: 2,
+    id: 3,
     name: "Paint",
     image: ImageOne,
     link: "https://paint-orpin.vercel.app/",
   },
   {
-    id: 3,
+    id: 2,
     name: "New Oxford",
     link: "https://new-oxford.vercel.app/",
-    image: ImageTwo,
+    image: Oxford,
   },
+  {
+    id: 2,
+    name: "BirJoy",
+    link: "https://www.bir-joy.uz/",
+    image: BirJoy,
+  },
+  {
+    id: 2,
+    name: "BandUp",
+    link: "https://unversels.vercel.app/",
+    image: BandUp,
+  },
+
 ];
 
 const filterData = [
@@ -89,17 +101,22 @@ const Portfolio = () => {
               onMouseLeave={() => handleHover(null)}
             >
               <div className="portfolio__content__cards__item__img-wrapper">
-                <a>
-                  <img alt="dummy data" src={item.image} />
+                <a href={item.link} target="_blank" rel="noreferrer">
+                  <img alt={`${item.name} project preview`} src={item.image} />
                 </a>
               </div>
               <div className="overlay">
-                {index === hoveredValue && (
-                  <div>
-                    <p>{item.name}</p>
-                    <button>Visit</button>
-                  </div>
-                )}
+                <div>
+                  <p>{item.name}</p>
+                  <a
+                    className="visit-button"
+                    href={item.link}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Visit
+                  </a>
+                </div>
               </div>
             </div>
           ))}

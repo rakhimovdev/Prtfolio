@@ -6,6 +6,8 @@
     align-items: center;
     font-size: 1.2rem;
     position: sticky;
+    top: 0;
+    z-index: 1000;
 
     &__container{
         display: flex;
@@ -55,6 +57,9 @@
 
 .nav-icon{
     display: none;
+    border: 0;
+    background: transparent;
+    font: inherit;
 }
 
 @media only screen and (max-width : 768px){
@@ -67,6 +72,7 @@
         top: 80px;
         left: -110%;
         opacity: 1;
+        z-index: 1000;
         transition: all 0.5s ease;
 
         &.active{

@@ -30,7 +30,11 @@ const Navbar = () => {
   const [toggleIcon, setToggleIcon] = useState(false);
 
   const handleToggleIcon = () => {
-    setToggleIcon(!toggleIcon);
+    setToggleIcon((isOpen) => !isOpen);
+  };
+
+  const handleMenuItemClick = () => {
+    setToggleIcon(false);
   };
   return (
     <div>
@@ -41,6 +45,7 @@ const Navbar = () => {
           </Link>
         </div>
         <ul
+          id="main-navigation"
           className={`navbar__container__menu ${toggleIcon ? "active" : ""} `}
         >
           {data.map((item, key) => (
@@ -48,15 +53,23 @@ const Navbar = () => {
               <Link
                 className="navbar__container__menu__item__links"
                 to={item.to}
+                onClick={handleMenuItemClick}
               >
                 {item.label}
               </Link>
             </li>
           ))}
         </ul>
-        <div className="nav-icon" onClick={handleToggleIcon}>
+        <button
+          type="button"
+          className="nav-icon"
+          onClick={handleToggleIcon}
+          aria-label={toggleIcon ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={toggleIcon}
+          aria-controls="main-navigation"
+        >
           {toggleIcon ? <HiX size={30} /> : <FaBars size={30} />}
-        </div>
+        </button>
       </nav>
     </div>
   );
